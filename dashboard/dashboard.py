@@ -44,35 +44,45 @@ AQI_COLORS = {
 MONTH_NAMES = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"]
 
 # ─── SIDEBAR ──────────────────────────────────────────────────────────────────
-st.sidebar.image("https://img.icons8.com/color/96/air-quality.png", width=80)
-st.sidebar.title("Filter Data")
+st.sidebar.title("🌫️ Air Quality Dashboard")
+st.sidebar.markdown("**Stasiun Aotizhongxin, Beijing**")
+st.sidebar.markdown("---")
 
-years = sorted(df["year"].unique())
-selected_years = st.sidebar.multiselect("Pilih Tahun", years, default=years)
+# Date range filter
+min_date = df["datetime"].dt.date.min()
+max_date = df["datetime"].dt.date.max()
 
-months = list(range(1, 13))
-selected_months = st.sidebar.multiselect(
-    "Pilih Bulan", months,
-    default=months,
-    format_func=lambda m: MONTH_NAMES[m - 1]
+st.sidebar.subheader("Filter Tanggal")
+start_date = st.sidebar.date_input(
+    "Tanggal Mulai",
+    value=min_date,
+    min_value=min_date,
+    max_value=max_date,
+)
+end_date = st.sidebar.date_input(
+    "Tanggal Akhir",
+    value=max_date,
+    min_value=min_date,
+    max_value=max_date,
 )
 
+if start_date > end_date:
+    st.sidebar.error("Tanggal mulai tidak boleh lebih besar dari tanggal akhir!")
+    st.stop()
+
 pollutant = st.sidebar.selectbox(
-    "Polutan Utama untuk Analisis",
+    "Pilih Polutan",
     ["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"],
     index=0,
 )
 
 # Filter dataframe
-df_filtered = df[df["year"].isin(selected_years) & df["month"].isin(selected_months)]
+mask = (df["datetime"].dt.date >= start_date) & (df["datetime"].dt.date <= end_date)
+df_filtered = df[mask]
 
-# ─── HEADER ───────────────────────────────────────────────────────────────────
-st.title("🌫️ Dashboard Kualitas Udara – Aotizhongxin, Beijing")
-st.markdown(
-    "Dataset: **PRSA Air Quality Dataset** | Periode: 2013–2017 | "
-    "Sumber: UCI Machine Learning Repository"
-)
-st.markdown("---")
+st.sidebar.markdown("---")
+st.sidebar.caption(f"Menampilkan data: **{start_date}** s/d **{end_date}**")
+st.sidebar.caption(f"Total data: **{len(df_filtered):,}** jam")
 
 # ─── METRIC CARDS ─────────────────────────────────────────────────────────────
 col1, col2, col3, col4 = st.columns(4)
