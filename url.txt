@@ -1,0 +1,3 @@
+https://your-app-name.streamlit.app
+
+(Isi dengan URL deployment Streamlit Cloud Anda setelah melakukan deploy)
