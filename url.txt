@@ -1,3 +1,3 @@
-https://your-app-name.streamlit.app
+https://air-quality-analysis-nyqovynexd8dkxx5bwnwco.streamlit.app/
 
-(Isi dengan URL deployment Streamlit Cloud Anda setelah melakukan deploy)
+
