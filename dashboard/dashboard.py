@@ -259,4 +259,4 @@ st.markdown("""
 - ⚠️ Lebih dari **50% waktu** stasiun ini berada dalam kondisi tidak sehat — krisis kualitas udara serius
 """)
 
-st.caption("Dibuat untuk Proyek Analisis Data – Dicoding | Dataset: PRSA Air Quality Aotizhongxin 2013–2017")
+st.caption("Dibuat oleh rafi untuk Proyek Analisis Data – Dicoding | Dataset: PRSA Air Quality Aotizhongxin 2013–2017")
