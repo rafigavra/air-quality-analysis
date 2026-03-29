@@ -166,11 +166,11 @@ with st.expander("Lihat Insight Pertanyaan 1"):
     st.dataframe(yearly.rename(columns={"PM2.5":"Rata-rata PM2.5 (µg/m³)"})
                  .set_index("year").round(2), use_container_width=True)
     st.markdown(
-        "- Bulan **Desember, Januari, Februari** (musim dingin) secara konsisten "
-        "mencatat PM2.5 tertinggi — diduga akibat penggunaan pemanas berbahan bakar "
-        "batubara dan kondisi inversi termal yang memerangkap polutan.\n"
-        "- Bulan **Juni–Agustus** (musim panas) memiliki PM2.5 terendah karena "
-        "sirkulasi udara lebih baik dan curah hujan lebih tinggi."
+        "- Bulan **Desember (105.1 µg/m³)** mencatat rata-rata PM2.5 tertinggi, "
+        "diikuti November (98.2) dan Maret (99.6)\n"
+        "- Bulan **Agustus (55.4 µg/m³)** mencatat rata-rata terendah\n"
+        "- Tren tahunan: 2013 (82.4) → 2014 (89.1) → 2015 (81.5) → 2016 (73.9) → 2017 (94.2) µg/m³\n"
+        "- Seluruh bulan masih jauh di atas batas aman WHO (15 µg/m³)"
     )
 
 st.markdown("---")
@@ -227,15 +227,13 @@ with c4:
 
 with st.expander("Lihat Insight Pertanyaan 2"):
     st.markdown(
-        f"- PM2.5 mencapai **puncak pada jam {peak_hour:02d}.00** yang bertepatan "
-        f"dengan jam sibuk lalu lintas pagi hari.\n"
-        f"- **{strongest}** adalah faktor cuaca dengan korelasi terkuat terhadap PM2.5 "
-        f"(r = {corr[strongest]:.3f}).\n"
-        "- Korelasi negatif pada kecepatan angin (WSPM) menunjukkan bahwa angin kencang "
-        "membantu mendispersi polutan sehingga PM2.5 menurun.\n"
-        "- Suhu (TEMP) berkorelasi negatif — suhu rendah di musim dingin berasosiasi "
-        "dengan PM2.5 tinggi."
-    )
+    f"- PM2.5 mencapai **puncak pada jam 00.00 dini hari (91.6 µg/m³)** "
+    f"dan terendah pada jam 16.00 (75.3 µg/m³)\n"
+    f"- **WSPM (kecepatan angin)** adalah faktor terkuat dengan korelasi r = -0.2749\n"
+    "- Titik embun (DEWP) berkorelasi positif (r = +0.1200) — kelembapan tinggi "
+    "menghambat dispersi polutan\n"
+    "- Selisih puncak-lembah hanya ~16 µg/m³, artinya PM2.5 tetap tinggi sepanjang hari"
+)
 
 st.markdown("---")
 
@@ -282,13 +280,18 @@ with c6:
 st.markdown("---")
 
 # ─── KESIMPULAN ───────────────────────────────────────────────────────────────
-st.subheader("📝 Kesimpulan")
+st.subheader(" Kesimpulan")
 st.markdown("""
-**Pertanyaan 1:** Bulan **Desember, Januari, dan Februari** secara konsisten mencatat rata-rata PM2.5 tertinggi sepanjang tahun (musim dingin), sedangkan bulan **Juni–Agustus** mencatat PM2.5 terendah. Tren tahunan menunjukkan PM2.5 selalu berada jauh di atas batas aman WHO sepanjang 2013–2017.
+**Pertanyaan 1:** Bulan **Desember (105.1 µg/m³)** mencatat PM2.5 tertinggi dan 
+**Agustus (55.4 µg/m³)** terendah. Tren tahunan berfluktuasi tanpa penurunan 
+signifikan (73.9–94.2 µg/m³), menunjukkan sumber polusi musiman belum tertangani efektif.
 
-**Pertanyaan 2:** Konsentrasi PM2.5 mencapai puncak pada **jam 06.00–08.00 pagi** yang bertepatan dengan jam sibuk lalu lintas. **Kecepatan angin (WSPM)** adalah faktor cuaca dengan korelasi negatif terkuat — semakin kencang angin, semakin rendah PM2.5 karena polutan terdispersi.
+**Pertanyaan 2:** PM2.5 puncak pada **jam 00.00 (91.6 µg/m³)** dan terendah jam 16.00 
+(75.3 µg/m³). **Kecepatan angin (r = -0.2749)** adalah faktor cuaca paling berpengaruh 
+dalam menekan polusi udara.
 
-**Clustering AQI:** Lebih dari **50% waktu** stasiun Aotizhongxin berada dalam kondisi *Unhealthy* atau lebih buruk, dan hanya sekitar 10–15% waktu yang tergolong *Good* atau *Moderate*. Ini mengindikasikan krisis kualitas udara jangka panjang yang memerlukan intervensi kebijakan serius.
+**Clustering AQI:** **52.4% waktu** berada di kategori *Unhealthy* atau lebih buruk. 
+Hanya 34.6% waktu yang tergolong aman (*Good* + *Moderate*) dari total 35.064 jam pengukuran.
 """)
 
 st.caption("Dibuat ole rafi untuk Proyek Analisis Data – Dicoding | Dataset: PRSA Air Quality Aotizhongxin 2013–2017")
