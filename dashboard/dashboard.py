@@ -77,7 +77,7 @@ st.sidebar.caption(f"Menampilkan data: **{start_date}** s/d **{end_date}**")
 st.sidebar.caption(f"Total data: **{len(df_filtered):,}** jam")
 
 # ─── HEADER ───────────────────────────────────────────────────────────────────
-st.title("🌫️ Dashboard Kualitas Udara – Aotizhongxin, Beijing")
+st.title(" Dashboard Kualitas Udara – Aotizhongxin, Beijing")
 st.markdown("**Dataset:** PRSA Air Quality Dataset | **Periode:** 1 Mar 2013 – 28 Feb 2017")
 st.markdown("---")
 
@@ -97,7 +97,7 @@ col4.metric("Jam Tidak Sehat",    f"{pct_unhealthy:.1f}%")
 st.markdown("---")
 
 # ─── PERTANYAAN 1 ─────────────────────────────────────────────────────────────
-st.subheader("📊 Pertanyaan 1")
+st.subheader(" Pertanyaan 1")
 st.markdown(
     "_Pada bulan apa rata-rata konsentrasi PM2.5 paling tinggi dan paling rendah "
     "di stasiun Aotizhongxin selama periode 2013–2017, serta bagaimana tren "
@@ -176,7 +176,7 @@ with st.expander("Lihat Insight Pertanyaan 1"):
 st.markdown("---")
 
 # ─── PERTANYAAN 2 ─────────────────────────────────────────────────────────────
-st.subheader("⏰ Pertanyaan 2")
+st.subheader(" Pertanyaan 2")
 st.markdown(
     "_Pada jam berapa dalam sehari rata-rata konsentrasi PM2.5 mencapai puncaknya, "
     "dan di antara faktor cuaca (suhu, tekanan udara, titik embun, curah hujan, "
@@ -240,7 +240,7 @@ with st.expander("Lihat Insight Pertanyaan 2"):
 st.markdown("---")
 
 # ─── ANALISIS LANJUTAN – CLUSTERING AQI ──────────────────────────────────────
-st.subheader("🎯 Analisis Lanjutan: Clustering Kualitas Udara (AQI)")
+st.subheader(" Analisis Lanjutan: Clustering Kualitas Udara (AQI)")
 st.markdown(
     "Pengelompokan data PM2.5 ke dalam 6 kategori menggunakan teknik **binning manual** "
     "berdasarkan standar US EPA AQI."
